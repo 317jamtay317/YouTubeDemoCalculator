@@ -4,9 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
+        xmlns:viewModels="clr-namespace:Calculator.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding Title}" Height="300" Width="250">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="40"></Setter>
+                <Setter Property="Width" Value="40"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+                <Setter Property="Command" Value="{Binding ButtonPushedCommand}"></Setter>
+                <Setter Property="CommandParameter" Value="{Binding Content, RelativeSource={RelativeSource Self}}"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="1" BorderThickness="1" Grid.Column="1" Grid.ColumnSpan="4" Background="White" Height="40" BorderBrush="#c5c5c5">
+            <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding CalculatorText}" ></TextBlock>
+        </Border>
         
+        <Button Grid.Row="2" Grid.Column="1">7</Button>
+        <Button Grid.Row="2" Grid.Column="2">8</Button>
+        <Button Grid.Row="2" Grid.Column="3">9</Button>
+        <Button Grid.Row="2" Grid.Column="4">*</Button>
+
+        <Button Grid.Row="3" Grid.Column="1">4</Button>
+        <Button Grid.Row="3" Grid.Column="2">5</Button>
+        <Button Grid.Row="3" Grid.Column="3">6</Button>
+        <Button Grid.Row="3" Grid.Column="4">-</Button>
+
+        <Button Grid.Row="4" Grid.Column="1">1</Button>
+        <Button Grid.Row="4" Grid.Column="2">2</Button>
+        <Button Grid.Row="4" Grid.Column="3">3</Button>
+        <Button Grid.Row="4" Grid.Column="4">*</Button>
+
+        <Button Width="auto" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">0</Button>
+        <Button Grid.Row="5" Grid.Column="3" >.</Button>
+        <Button Grid.Row="5" Grid.Column="4" >/</Button>
     </Grid>
 </Window>
