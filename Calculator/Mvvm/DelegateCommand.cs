@@ -27,7 +27,7 @@ namespace Calculator.Mvvm
             _execute = execute;
         }
 
-        public DelegateCommand(Action execute, Func<bool> canExecute)
+        public DelegateCommand(Action execute, Func<bool> canExecute):this(execute)
         {
             _canExecute = canExecute;
         }
@@ -51,7 +51,7 @@ namespace Calculator.Mvvm
             _execute = execute;
         }
 
-        public DelegateCommand(Action<T> execute, Func<T,bool> canExecute)
+        public DelegateCommand(Action<T> execute, Func<T,bool> canExecute) : this(execute)
         {
             _canExecute = canExecute;
         }

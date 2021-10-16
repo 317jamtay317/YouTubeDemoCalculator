@@ -1,4 +1,5 @@
-﻿using Unity;
+﻿using Calculator.Core.Calculators;
+using Unity;
 
 namespace Calculator.App_Start
 {
@@ -13,6 +14,7 @@ namespace Calculator.App_Start
 
         public static IUnityContainer RegisterSingeltions(this IUnityContainer container)
         {
+            container.RegisterSingleton<ICalculator, ExpressionCalculator>();
             return container;
         }
 

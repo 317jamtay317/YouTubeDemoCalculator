@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:Calculator"
         xmlns:viewModels="clr-namespace:Calculator.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="300" Width="250">
-    <Window.DataContext>
-        <viewModels:MainWindowViewModel />
-    </Window.DataContext>
+        Title="{Binding Title}" Height="300" Width="320">
+
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
@@ -30,6 +28,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -38,22 +37,25 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="1" BorderThickness="1" Grid.Column="1" Grid.ColumnSpan="4" Background="White" Height="40" BorderBrush="#c5c5c5">
-            <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding CalculatorText}" ></TextBlock>
+        <Border Grid.Row="1" BorderThickness="1" Grid.Column="1" Grid.ColumnSpan="5" Background="White" Height="40" BorderBrush="#c5c5c5">
+            <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding Expression}" ></TextBlock>
         </Border>
         
         <Button Grid.Row="2" Grid.Column="1">7</Button>
         <Button Grid.Row="2" Grid.Column="2">8</Button>
         <Button Grid.Row="2" Grid.Column="3">9</Button>
-        <Button Grid.Row="2" Grid.Column="4">*</Button>
+        <Button Grid.Row="2" Grid.Column="4">+</Button>
+        <Button Grid.Row="2" Grid.Column="5" Command="{Binding ClearCommand}">CE</Button>
 
         <Button Grid.Row="3" Grid.Column="1">4</Button>
         <Button Grid.Row="3" Grid.Column="2">5</Button>
         <Button Grid.Row="3" Grid.Column="3">6</Button>
         <Button Grid.Row="3" Grid.Column="4">-</Button>
+        <Button Grid.Row="3" Grid.Column="5" Command="{Binding EqualsCommand}">=</Button>
 
         <Button Grid.Row="4" Grid.Column="1">1</Button>
         <Button Grid.Row="4" Grid.Column="2">2</Button>
