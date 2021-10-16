@@ -1,8 +1,7 @@
 ﻿<prism:PrismApplication x:Class="Calculator.App"
              xmlns:prism="http://prismlibrary.com/"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Calculator">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
          
     </Application.Resources>
