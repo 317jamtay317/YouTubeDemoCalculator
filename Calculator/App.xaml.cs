@@ -1,24 +1,24 @@
 ﻿using System.Windows;
-using Calculator.App_Start;
-using Calculator.ViewModels;
-using Unity;
+using Calculator.Core.Calculators;
+using Calculator.Views;
+using Prism.Ioc;
+using Prism.Unity;
 
 namespace Calculator
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        protected IUnityContainer Container = Bootstrapper.Container;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            Container.RegisterSingeltions().RegisterSingeltions();
-            var viewModel = Container.Resolve<MainWindowViewModel>();
-            var mainWindow = new MainWindow(){DataContext = viewModel};
+            containerRegistry.RegisterSingleton<ICalculator, ExpressionCalculator>();
+        }
 
-            mainWindow.Closed += (s, ex) => Shutdown();
-            mainWindow.Show();
+        protected override Window CreateShell()
+        {
+            return Container.Resolve<MainWindow>();
         }
     }
 }
